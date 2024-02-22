@@ -124,13 +124,13 @@ EduChat的能力
 
 print('Loading model...')
 
-model = get_specific_model(args.model_path)
+model = get_specific_model(args.model_path, local_files_only=True)
 
 model.half().cuda()
 model.gradient_checkpointing_enable()  # reduce number of stored activations
 
 print('Loading tokenizer...')
-tokenizer = transformers.LlamaTokenizer.from_pretrained(args.model_path)
+tokenizer = transformers.LlamaTokenizer.from_pretrained(args.model_path, local_files_only=True)
 
 tokenizer.add_special_tokens(
     {
